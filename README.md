@@ -1,3 +1,3 @@
-# SURL - **S**hort URL
+# SURL - Short URL
 
-A URL Shortener service built with go.
+A URL shortener service built with go.
