@@ -1,0 +1,24 @@
+name: surl
+
+services:
+  server:
+    build: ./
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+  db:
+    image: postgres:16.2-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    ports:
+    - "5432:5432"
+    volumes:
+    - surl-server-data:/var/lib/postgresql/data
+
+volumes:
+  surl-server-data:
+    driver: local
