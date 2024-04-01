@@ -16,10 +16,10 @@ func Connect(c *config.Config) (*sql.DB, error) {
 		c.DbPass,
 		c.DbName)
 
-	DB, err := sql.Open("postgres", connStr)
+	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		return nil, err
 	}
 
-	return DB, nil
+	return db, nil
 }
