@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 	"surl-server/internal/config"
+
+	_ "github.com/lib/pq"
 )
 
 func Connect(c *config.Config) (*sql.DB, error) {

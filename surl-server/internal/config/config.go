@@ -15,8 +15,10 @@ type Config struct {
 	DbPass string
 }
 
-func Get() *Config {
-	godotenv.Load()
+func Get() (*Config, error) {
+	if err := godotenv.Load(); err != nil {
+		return nil, err
+	}
 	return &Config{
 		Port:   ":" + os.Getenv("SERVER_PORT"),
 		DbHost: os.Getenv("DB_HOST"),
@@ -24,5 +26,5 @@ func Get() *Config {
 		DbName: os.Getenv("DB_NAME"),
 		DbUser: os.Getenv("DB_USER"),
 		DbPass: os.Getenv("DB_PASS"),
-	}
+	}, nil
 }
