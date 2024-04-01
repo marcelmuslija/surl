@@ -15,7 +15,7 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASS}
     ports:
-    - "5432:5432"
+    - "${DB_PORT}:${DB_PORT}"
     volumes:
     - surl-server-data:/var/lib/postgresql/data
 
