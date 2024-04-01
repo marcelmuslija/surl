@@ -7,6 +7,8 @@ services:
       - db
     ports:
       - "8080:8080"
+    networks:
+      - surl-network
   db:
     image: postgres:16.2-alpine
     restart: always
@@ -17,9 +19,15 @@ services:
     ports:
     - "${DB_PORT}:${DB_PORT}"
     volumes:
-    - surl-server-data:/var/lib/postgresql/data
+    - surl-data:/var/lib/postgresql/data
     - ./scripts/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - surl-network
 
 volumes:
-  surl-server-data:
+  surl-data:
     driver: local
+
+networks:
+  surl-network:
+    driver: bridge

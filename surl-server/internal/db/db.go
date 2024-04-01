@@ -9,7 +9,7 @@ import (
 )
 
 func Connect(c *config.Config) (*sql.DB, error) {
-	connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s",
+	connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		c.DbHost,
 		c.DbPort,
 		c.DbUser,
