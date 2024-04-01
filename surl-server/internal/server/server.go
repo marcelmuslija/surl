@@ -35,8 +35,7 @@ func New() (*Server, error) {
 
 	shortUrlHandler := short.NewHandler(db)
 	r.HandleFunc("/api/short", shortUrlHandler.Shorten).Methods("POST")
-	r.HandleFunc("/api/short/{token}", shortUrlHandler.Redirect).Methods("GET")
-	r.HandleFunc("/api/short/{token}", shortUrlHandler.Shorten).Methods("DELETE")
+	r.HandleFunc("/api/short/{code}", shortUrlHandler.Redirect).Methods("GET")
 
 	return &Server{
 		Router: r,
